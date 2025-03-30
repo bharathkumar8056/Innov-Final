@@ -1,0 +1,234 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(to bottom, transparent, rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+}
+
+.font-sans {
+  font-family:
+    var(--font-poppins), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+.font-playfair {
+  font-family: var(--font-playfair), ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Custom styles */
+.hover-grow {
+  transition: transform 0.3s ease;
+}
+
+.hover-grow:hover {
+  transform: scale(1.05);
+}
+
+@media (max-width: 640px) {
+  h1 {
+    font-size: 2.5rem;
+  }
+  h2 {
+    font-size: 2rem;
+  }
+}
+
+input,
+textarea {
+  color: black !important;
+  background-color: white !important;
+}
+
+/* Green theme colors */
+.bg-green-primary {
+  background-color: #16a34a;
+}
+
+.text-green-primary {
+  color: #16a34a;
+}
+
+/* Heading styles to match screenshots */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-playfair), ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+}
+
+h1.hero-title {
+  font-size: 3.5rem;
+  line-height: 1.1;
+  font-weight: 700;
+}
+
+h2.section-title {
+  font-size: 2.75rem;
+  color: #166534;
+  text-align: center;
+  margin-bottom: 2.5rem;
+  font-weight: 700;
+}
+
+@media (max-width: 768px) {
+  h1.hero-title {
+    font-size: 2.75rem;
+  }
+
+  h2.section-title {
+    font-size: 2.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  h1.hero-title {
+    font-size: 2.25rem;
+  }
+
+  h2.section-title {
+    font-size: 2rem;
+  }
+}
+
+/* Product card styles */
+.product-card {
+  background-color: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+.product-title {
+  font-family: var(--font-playfair);
+  color: #16a34a;
+  font-size: 1.75rem;
+  font-weight: 600;
+}
+
+.product-description {
+  color: #4b5563;
+  margin-bottom: 1rem;
+  font-size: 1.125rem;
+}
+
+/* Button styles */
+.btn-green {
+  background-color: #16a34a;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+  display: inline-block;
+  text-align: center;
+  font-size: 1.125rem;
+}
+
+.btn-green:hover {
+  background-color: #15803d;
+}
+
+/* Chat component styles */
+.chat-open {
+  position: fixed;
+  z-index: 50;
+  inset: 0;
+}
+
+.chat-closed {
+  position: fixed;
+  z-index: 50;
+  bottom: 1.5rem;
+  left: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .chat-open {
+    inset: auto;
+    bottom: 1.5rem;
+    left: 1.5rem;
+  }
+}
+
+/* Consistent text sizes */
+.text-base {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.text-lg {
+  font-size: 1.125rem;
+  line-height: 1.75;
+}
+
+.text-xl {
+  font-size: 1.25rem;
+  line-height: 1.75;
+}
+
+.text-2xl {
+  font-size: 1.5rem;
+  line-height: 2;
+}
+
+.text-3xl {
+  font-size: 1.875rem;
+  line-height: 2.25;
+}
+
+.text-4xl {
+  font-size: 2.25rem;
+  line-height: 2.5;
+}
+
+.text-5xl {
+  font-size: 3rem;
+  line-height: 1;
+}
+
+.text-6xl {
+  font-size: 3.75rem;
+  line-height: 1;
+}
+
+/* Paragraph text */
+p {
+  font-size: 1.125rem;
+  line-height: 1.75;
+}
+
+/* List items */
+li {
+  font-size: 1.125rem;
+  line-height: 1.75;
+}
+
