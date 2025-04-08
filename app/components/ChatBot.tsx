@@ -26,14 +26,19 @@ const ChatBot: React.FC = () => {
   const [input, setInput] = useState("")
   const [showPredefined, setShowPredefined] = useState(true)
   const [askingLocation, setAskingLocation] = useState({ status: false, step: 0 })
-  const messagesEndRef = useRef<HTMLDivElement>(null)
+  const [lastAnswerRef, setLastAnswerRef] = useState<HTMLDivElement | null>(null)
+  const chatContainerRef = useRef<HTMLDivElement>(null)
+  const lastQuestionRef = useRef<HTMLDivElement>(null)
 
-  const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
-  }
-
+  // Initialize chat when opened
   useEffect(() => {
-    scrollToBottom()
+    if (isOpen && messages.length === 0) {
+      setMessages([
+        { text: "Hello! How can I help you today? Please select one of the following questions:", isUser: false },
+      ])
+      setShowPredefined(true)
+      setAskingLocation({ status: false, step: 0 })
+    }
 
     // Prevent body scroll when chat is open on mobile
     if (isOpen) {
@@ -61,29 +66,35 @@ const ChatBot: React.FC = () => {
         whatsappButton.style.display = "block"
       }
     }
-  }, [isOpen, messages]) // Added messages dependency to scroll when new messages arrive
+  }, [isOpen, messages.length])
 
   const handleToggle = () => {
     setIsOpen(!isOpen)
-    if (!isOpen) {
-      setMessages([
-        { text: "Hello! How can I help you today? Please select one of the following questions:", isUser: false },
-      ])
-      setShowPredefined(true)
-      setAskingLocation({ status: false, step: 0 })
-    }
   }
 
   const handleSend = () => {
     if (input.trim()) {
+      // Add user message
       setMessages((prev) => [...prev, { text: input, isUser: true }])
+
+      // Store reference to the question
+      setTimeout(() => {
+        if (lastQuestionRef.current) {
+          lastQuestionRef.current.scrollIntoView({ block: "center" })
+        }
+      }, 50)
+
+      // Process response
       handleResponse(input)
       setInput("")
     }
   }
 
   const handlePredefinedQuestion = (question: string) => {
+    // Add user question
     setMessages((prev) => [...prev, { text: question, isUser: true }])
+
+    // Process response
     handleResponse(question)
   }
 
@@ -162,12 +173,31 @@ const ChatBot: React.FC = () => {
             "I'm sorry, I don't have information on that specific topic. Please choose from one of the following questions:"
       }
     }
+
+    // Add bot response after a short delay
     setTimeout(() => {
       setMessages((prev) => [...prev, { text: response, isUser: false }])
+
       // Always show predefined questions after a response, except during location gathering
       if (!askingLocation.status) {
         setShowPredefined(true)
       }
+
+      // Ensure the answer is visible
+      setTimeout(() => {
+        // Find the last bot message (the answer)
+        const botMessages = document.querySelectorAll(".bot-message")
+        if (botMessages.length > 0) {
+          const lastBotMessage = botMessages[botMessages.length - 1] as HTMLElement
+          if (lastBotMessage) {
+            // Scroll to make the answer visible
+            lastBotMessage.scrollIntoView({ block: "start", behavior: "auto" })
+
+            // Store reference to the answer
+            setLastAnswerRef(lastBotMessage as HTMLDivElement)
+          }
+        }
+      }, 100)
     }, 500)
   }
 
@@ -189,12 +219,20 @@ const ChatBot: React.FC = () => {
               </button>
             </div>
 
-            <div className="flex-1 overflow-y-auto p-4 bg-gray-50">
+            <div
+              ref={chatContainerRef}
+              className="flex-1 overflow-y-auto p-4 bg-white"
+              style={{ maxHeight: "calc(100vh - 180px)" }}
+            >
               {messages.map((message, index) => (
-                <div key={index} className={`mb-4 ${message.isUser ? "text-right" : "text-left"}`}>
+                <div
+                  key={index}
+                  className={`mb-4 ${message.isUser ? "text-right" : "text-left"}`}
+                  ref={message.isUser && index === messages.length - 2 ? lastQuestionRef : null}
+                >
                   <span
                     className={`inline-block p-3 rounded-lg ${
-                      message.isUser ? "bg-green-100 text-green-800" : "bg-green-600 text-white"
+                      message.isUser ? "bg-green-100 text-green-800" : "bg-green-600 text-white bot-message"
                     } whitespace-pre-line max-w-[90%] text-base`}
                   >
                     {message.text}
@@ -202,7 +240,7 @@ const ChatBot: React.FC = () => {
                 </div>
               ))}
               {showPredefined && (
-                <div className="mt-4">
+                <div className="mt-4 predefined-questions">
                   <p className="text-sm text-gray-500 mb-2">Choose a question:</p>
                   {predefinedQuestions.map((question, index) => (
                     <button
@@ -215,7 +253,6 @@ const ChatBot: React.FC = () => {
                   ))}
                 </div>
               )}
-              <div ref={messagesEndRef} />
             </div>
 
             <div className="p-4 border-t bg-white md:rounded-b-lg">
@@ -254,4 +291,3 @@ const ChatBot: React.FC = () => {
 }
 
 export default ChatBot
-
