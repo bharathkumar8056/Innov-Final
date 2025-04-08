@@ -19,6 +19,7 @@
 body {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(to bottom, transparent, rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+  font-family: var(--font-poppins), sans-serif;
 }
 
 .font-sans {
@@ -27,7 +28,8 @@ body {
 }
 
 .font-playfair {
-  font-family: var(--font-playfair), ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  font-family: var(--font-playfair), serif;
+  color: #166534;
 }
 
 @layer utilities {
@@ -76,13 +78,16 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: var(--font-playfair), ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  font-family: "Playfair Display", serif;
+  color: #166534;
+  font-weight: 600;
 }
 
 h1.hero-title {
   font-size: 3.5rem;
   line-height: 1.1;
   font-weight: 700;
+  color: white;
 }
 
 h2.section-title {
@@ -90,7 +95,7 @@ h2.section-title {
   color: #166534;
   text-align: center;
   margin-bottom: 2.5rem;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 @media (max-width: 768px) {
@@ -128,7 +133,7 @@ h2.section-title {
 }
 
 .product-title {
-  font-family: var(--font-playfair);
+  font-family: "Playfair Display", serif;
   color: #16a34a;
   font-size: 1.75rem;
   font-weight: 600;
@@ -167,15 +172,15 @@ h2.section-title {
 .chat-closed {
   position: fixed;
   z-index: 50;
-  bottom: 1.5rem;
-  left: 1.5rem;
+  bottom: 6rem;
+  right: 1.5rem;
 }
 
 @media (min-width: 768px) {
   .chat-open {
     inset: auto;
-    bottom: 1.5rem;
-    left: 1.5rem;
+    bottom: 6rem;
+    right: 1.5rem;
   }
 }
 
@@ -224,6 +229,7 @@ h2.section-title {
 p {
   font-size: 1.125rem;
   line-height: 1.75;
+  color: #4b5563;
 }
 
 /* List items */
@@ -232,3 +238,36 @@ li {
   line-height: 1.75;
 }
 
+/* Update body text style */
+body,
+p,
+li,
+a,
+button,
+input,
+textarea {
+  font-family: "Poppins", sans-serif;
+}
+
+/* Update navigation style */
+nav a {
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-size: 1.125rem;
+}
+
+/* Update section headings */
+#about h3,
+#contact h3 {
+  font-family: "Playfair Display", serif;
+  color: #166534;
+}
+
+/* ChatBot specific styles */
+.bot-message {
+  scroll-margin-top: 80px;
+}
+
+.predefined-questions {
+  scroll-margin-top: 20px;
+}
