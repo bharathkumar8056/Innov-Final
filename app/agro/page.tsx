@@ -367,18 +367,18 @@ export default function AgroPage() {
               <p className="text-base text-white">Nurturing health, naturally.</p>
             </div>
             <div className="flex space-x-6 mb-4 md:mb-0">
-              <a href="#" className="hover:text-green-400 transition duration-300">
+{/*               <a href="#" className="hover:text-green-400 transition duration-300">
                 <FaInstagram size={24} />
-              </a>
+              </a> */}
               <a href="#" className="hover:text-green-400 transition duration-300">
                 <FaWhatsapp size={24} />
               </a>
-              <a href="#" className="hover:text-green-400 transition duration-300">
+{/*               <a href="#" className="hover:text-green-400 transition duration-300">
                 <FaFacebookF size={24} />
               </a>
               <a href="#" className="hover:text-green-400 transition duration-300">
                 <FaYoutube size={24} />
-              </a>
+              </a> */}
             </div>
             <div>
               <ul className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-6 text-base">
