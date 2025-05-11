@@ -29,7 +29,7 @@ body {
 
 .font-playfair {
   font-family: var(--font-playfair), serif;
-  color: #166534;
+/*   color: #166534; */
 }
 
 @layer utilities {
