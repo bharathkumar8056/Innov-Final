@@ -363,7 +363,7 @@ export default function AgroPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="mb-4 md:mb-0">
-              <h3 className="text-2xl font-bold font-playfair mb-2 text-white">INNOVFUTURE SOLUTIONS LLP</h3>
+              <h3 className="text-2xl font-bold font-playfair mb-2 style={{ color: 'white' }}">INNOVFUTURE SOLUTIONS LLP</h3>
               <p className="text-base text-white">Nurturing health, naturally.</p>
             </div>
             <div className="flex space-x-6 mb-4 md:mb-0">
