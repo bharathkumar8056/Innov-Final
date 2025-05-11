@@ -82,7 +82,7 @@ export default function AgroPage() {
       <header className="bg-white shadow-md fixed top-0 left-0 right-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
           <div className="flex items-center">
-            <Image src="https://i.ibb.co/ZRq2H67d/Innovfuture-logo.jpg" alt="Innovfuture Solutions Logo" width={50} height={50} className="mr-3" />
+            <Image src="https://i.ibb.co/hJkzBhV1/Logo-Final.png" alt="Innovfuture Solutions Logo" width={50} height={50} className="mr-3" />
             <span className="text-2xl font-bold text-green-800 font-playfair">Innovfuture Solutions</span>
           </div>
           <nav className="hidden md:block">
@@ -364,21 +364,21 @@ export default function AgroPage() {
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="mb-4 md:mb-0">
               <h3 className="text-2xl font-bold font-playfair mb-2">INNOVFUTURE SOLUTIONS LLP</h3>
-              <p className="text-base">Nurturing health, naturally.</p>
+              <p className="text-base text-white">Nurturing health, naturally.</p>
             </div>
             <div className="flex space-x-6 mb-4 md:mb-0">
-{/*               <a href="#" className="hover:text-green-400 transition duration-300">
+              <a href="#" className="hover:text-green-400 transition duration-300">
                 <FaInstagram size={24} />
-              </a> */}
-              <a href="https://api.whatsapp.com/send/?phone=7010735275&text=Hello%2C+I%27m+interested+in+Innovfuture+Solutions+products%21&type=phone_number&app_absent=0" className="hover:text-green-400 transition duration-300">
+              </a>
+              <a href="#" className="hover:text-green-400 transition duration-300">
                 <FaWhatsapp size={24} />
               </a>
-{/*               <a href="#" className="hover:text-green-400 transition duration-300">
+              <a href="#" className="hover:text-green-400 transition duration-300">
                 <FaFacebookF size={24} />
               </a>
               <a href="#" className="hover:text-green-400 transition duration-300">
                 <FaYoutube size={24} />
-              </a> */}
+              </a>
             </div>
             <div>
               <ul className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-6 text-base">
@@ -396,7 +396,7 @@ export default function AgroPage() {
             </div>
           </div>
           <div className="mt-8 pt-8 border-t border-green-700 text-center text-base">
-            <p>&copy; 2025 Innovfuture Solutions. All rights reserved. <a href = "https://instagram.com/bkb_incorporation/"> Powered By BKB Incorporation</a></p>
+            <p className="text-white">&copy; 2025 Innovfuture Solutions. All rights reserved. <a href="https://instagram.com/bkb_incorporation/" className="text-white hover:text-green-400 transition duration-300"> Powered By BKB Incorporation</a></p>
           </div>
         </div>
       </footer>
@@ -405,4 +405,5 @@ export default function AgroPage() {
     </div>
   )
 }
+
 
